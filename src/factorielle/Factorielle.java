@@ -4,30 +4,56 @@ import java.util.Scanner;
 
 public class Factorielle {
 	
+	
+	
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		/**Methode principale du programmee
+		 * @param : none
+		 * @return : none
+		 */
 		
-        System.out.println("Choisissez le nombre sur lequel mettre en place la notion de factorielle");
-        int number = scanner.nextInt();
+		Scanner scan = new Scanner(System.in);
 		
-		int result = factorielle(number);	
+		//Demande le nombre à factoriser (de type Int )
+        System.out.println("Choisissez le nombre sur lequel mettre en place la notion de factorielle (Ne fonctionne pas au dessus de 65) ");
+        int  number = scan.nextInt();
+		
+        //Appelle le résultat de la fonction factorielle et le stocke dans la variable result
+        String  result = factorielle(number);	
+        
+        //Affiche le résultat
 		System.out.println(result);
 	}
 	
 	
-	public static int factorielle(int n) {
-		int factorielle = 1;
+	public static String  factorielle(int  n) {
+		/**
+		 * @param n : nombre à factoriser
+		 * @return factorielle : factorielle du nombre n passé en paramétre
+		 */
 		
-		if(n == 0) {
-			return 1;
+		//Valeur qui va stocker le résultat de la factorielle (type long)
+		long  factorielle = 1;
+		
+		// Gere l'affichage pour montrer le calcul effectué
+		String calcul = "";
+		
+		
+		// Verifie que le nombre à lequel applique la notion de factorielle n'est pas 0 ou 1
+		if(n == 0 || n == 1){
+			return "1";
 		}
 		else {
-			 for (int i = 1; i <= n; i++) {
+			// Boucle pour chaque entier entier au nombre passé en paramétre
+			 for (int i = 1; i < n; i++) {
 				 factorielle = factorielle * i;
+				 calcul = calcul + i + " * ";
 			 }
+			 factorielle = factorielle * n;
+			 calcul +=  n + " = " + factorielle;
 		}
 		
-		return factorielle;
+		//Renvoie une string représentant le calcul effectué
+		return calcul;
 	}
-
 }
